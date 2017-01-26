@@ -1,7 +1,6 @@
 {
     "name": "mzur/kirby-flash",
     "description": "Stores data in the session for the next request. Data is removed after the next page load.",
-    "version": "0.1.0",
     "type": "library",
     "license": "MIT",
     "keywords": ["kirby", "flash", "session"],
