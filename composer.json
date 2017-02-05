@@ -22,5 +22,13 @@
         "files": [
             "src/helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jevets\\Kirby\\Flash\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "getkirby/toolkit": "dev-master"
     }
 }
