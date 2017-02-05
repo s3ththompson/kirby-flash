@@ -13,5 +13,7 @@ class HelperTest extends TestCase
     {
         flash('mykey', 'myvalue');
         $this->assertEquals('myvalue', flash('mykey'));
+        flash('mykey', 'myvalue2');
+        $this->assertEquals('myvalue2', flash('mykey'));
     }
 }

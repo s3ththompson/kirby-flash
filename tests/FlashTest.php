@@ -26,10 +26,26 @@ class FlashTest extends TestCase
 
     public function testSetGetAll()
     {
-        Flash::set('key', 'value');
-        $this->assertEquals('value', Flash::get('key'));
-        $this->assertEquals('default', Flash::get('key2', 'default'));
-        $this->assertNull(Flash::get('key3'));
-        $this->assertEquals(['key' => 'value'], Flash::all());
+        $flash = Flash::getInstance();
+        $flash->set('key', 'value');
+        $this->assertEquals('value', $flash->get('key'));
+        $this->assertEquals('default', $flash->get('key2', 'default'));
+        $this->assertNull($flash->get('key3'));
+        $this->assertEquals(['key' => 'value'], $flash->all());
+    }
+
+    public function testInstances()
+    {
+        $flash = Flash::getInstance();
+        $flash2 = new Flash('flash2');
+        $flash3 = new Flash('flash3');
+
+        $flash->set('key', 'value');
+        $flash2->set('key', 'value2');
+        $flash3->set('key', 'value3');
+
+        $this->assertEquals('value', $flash->get('key'));
+        $this->assertEquals('value2', $flash2->get('key'));
+        $this->assertEquals('value3', $flash3->get('key'));
     }
 }
