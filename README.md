@@ -29,8 +29,11 @@ Elsewhere...
 
 Install with composer:
 
-```
-composer require mzur/kirby-flash
+```bash
+# Kirby v2
+composer require mzur/kirby-flash:^1.0
+# Kirby v3
+composer require mzur/kirby-flash:^2.0
 ```
 
 ## Usage
@@ -108,7 +111,7 @@ flash('messages.errors'); // Array( 0 => 'Email is required.', 1 => 'Phone is re
 
 By default Flash stores data under the session key `_flash`.
 
-So you *could* access flash data like `s::get('_flash')` if you wanted to.
+So you *could* access flash data like `$kirby->session()->get('_flash')` if you wanted to.
 
 ### Changing the Session Key
 
