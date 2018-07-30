@@ -2,7 +2,7 @@
 
 namespace Jevets\Kirby;
 
-use S as Session;
+use Kirby\Cms\App;
 
 class Flash
 {
@@ -36,8 +36,7 @@ class Flash
     public function __construct($sessionKey)
     {
         $this->sessionKey = $sessionKey;
-        $this->data = Session::get($this->sessionKey, []);
-        Session::remove($this->sessionKey);
+        $this->data = App::instance()->session()->pull($this->sessionKey, []);
     }
 
     /**
@@ -95,7 +94,7 @@ class Flash
     public function set($key, $value)
     {
         $this->data[$key] = $value;
-        Session::set($this->sessionKey, $this->data);
+        App::instance()->session()->set($this->sessionKey, $this->data);
     }
 
     /**

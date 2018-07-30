@@ -28,7 +28,14 @@
         }
     },
     "require-dev": {
-        "getkirby/toolkit": "dev-master",
-        "phpunit/phpunit": "^4.6 || ^5.0"
-    }
+        "phpunit/phpunit": "^6.0",
+        "getkirby/cms": "@beta"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:k-next/kirby.git"
+        }
+    ],
+    "minimum-stability": "dev"
 }

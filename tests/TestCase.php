@@ -6,7 +6,7 @@ namespace Jevets\Kirby\Flash\Tests;
 // see: http://stackoverflow.com/a/4059399/1796523
 ob_start();
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * Default preparation for each test.
