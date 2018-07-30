@@ -34,7 +34,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "git@github.com:k-next/kirby.git"
+            "url": "https://github.com/k-next/kirby.git"
         }
     ],
     "minimum-stability": "dev"
