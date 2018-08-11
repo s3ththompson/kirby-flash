@@ -2,7 +2,7 @@
 
 namespace Jevets\Kirby\Flash\Tests;
 
-use Kirby\Cms\App;
+use Mzur\Kirby\DefuseSession\Defuse;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -12,6 +12,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public function setUp()
     {
         parent::setUp();
-        App::instance(new SessionTestApp());
+        Defuse::defuse();
     }
 }
