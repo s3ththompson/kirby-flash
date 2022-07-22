@@ -61,4 +61,17 @@ class FlashTest extends TestCase
         $flash = Flash::getInstance();
         $this->assertNull($flash->get('key'));
     }
+
+    public function testOverlappingSessions()
+    {
+        $flash = Flash::getInstance();
+        $flash->set("key", "value");
+        $this->nextPageLoad();
+        $flash = Flash::getInstance();
+        $this->assertEquals("value", $flash->get("key"));
+        $flash->set("key2", "value2");
+        $this->nextPageLoad();
+        $flash = Flash::getInstance();
+        $this->assertNull($flash->get("key"));
+    }
 }
