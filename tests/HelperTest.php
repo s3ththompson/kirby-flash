@@ -8,7 +8,6 @@ class HelperTest extends TestCase
     {
         $this->assertTrue(function_exists('flash'));
     }
-
     public function testFlash()
     {
         flash('mykey', 'myvalue');

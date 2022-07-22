@@ -6,7 +6,6 @@ use Jevets\Kirby\Flash;
 
 class FlashTest extends TestCase
 {
-
     public function testGetInstance()
     {
         $flash = Flash::getInstance();
@@ -15,11 +14,13 @@ class FlashTest extends TestCase
 
     public function testSessionKey()
     {
+        $flash = Flash::getInstance();
         $this->assertEquals('_flash', Flash::sessionKey());
     }
 
     public function testSetSessionKey()
     {
+        $flash = Flash::getInstance();
         Flash::setSessionKey('_myflash');
         $this->assertEquals('_myflash', Flash::sessionKey());
     }
@@ -47,5 +48,17 @@ class FlashTest extends TestCase
         $this->assertEquals('value', $flash->get('key'));
         $this->assertEquals('value2', $flash2->get('key'));
         $this->assertEquals('value3', $flash3->get('key'));
+    }
+
+    public function testNextSession()
+    {
+        $flash = Flash::getInstance();
+        $flash->set('key', 'value');
+        $this->nextPageLoad();
+        $flash = Flash::getInstance();
+        $this->assertEquals('value', $flash->get('key'));
+        $this->nextPageLoad();
+        $flash = Flash::getInstance();
+        $this->assertNull($flash->get('key'));
     }
 }
