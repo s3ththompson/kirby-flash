@@ -91,18 +91,21 @@ class Flash
      *
      * @param  string  $key
      * @param  mixed  $value
+     * @param  mixed  optional set $value for current page load only
      * @return void
      */
-    public function set($key, $value)
+    public function set($key, $value, $now = false)
     {
         $this->initialData[$key] = $value;
-        $nextData = App::instance()
-            ->session()
-            ->get($this->sessionKey, []);
-        $nextData[$key] = $value;
-        App::instance()
-            ->session()
-            ->set($this->sessionKey, $nextData);
+        if ($now === false) {
+            $nextData = App::instance()
+                ->session()
+                ->get($this->sessionKey, []);
+            $nextData[$key] = $value;
+            App::instance()
+                ->session()
+                ->set($this->sessionKey, $nextData);
+        }
     }
 
     /**
