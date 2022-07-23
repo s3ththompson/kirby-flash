@@ -50,6 +50,20 @@ class FlashTest extends TestCase
         $this->assertEquals('value3', $flash3->get('key'));
     }
 
+    public function testMultipleGetInstances()
+    {
+        $flash1 = new Flash('flash1');
+        $flash2 = new Flash('flash2');
+        $flash1->set('key', 'value1');
+        $flash2->set('key', 'value2');
+        $flash1 = null;
+        $flash2 = null;
+        $flash1 = Flash::getInstance('flash1');
+        $flash2 = Flash::getInstance('flash2');
+        $this->assertEquals('value1', $flash1->get('key'));
+        $this->assertEquals('value2', $flash2->get('key'));
+    }
+
     public function testNextSession()
     {
         $flash = Flash::getInstance();

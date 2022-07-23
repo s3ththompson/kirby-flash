@@ -7,11 +7,11 @@ use Kirby\Cms\App;
 class Flash
 {
     /**
-     * The singleton instance
+     * An array of singleton instances
      *
-     * @var Jevets\Kirby\Flash
+     * @var Jevets\Kirby\Flash[]
      */
-    protected static $instance;
+    protected static $instances = [];
 
     /**
      * A Session key identifier
@@ -33,7 +33,7 @@ class Flash
      * @param string $sessionKey
      * @return void
      */
-    public function __construct($sessionKey)
+    public function __construct($sessionKey = '_flash')
     {
         $this->sessionKey = $sessionKey;
         $this->initialData = App::instance()
@@ -46,13 +46,13 @@ class Flash
      *
      * @return Jevets\Kirby\Flash
      */
-    public static function getInstance()
+    public static function getInstance($sessionKey = '_flash')
     {
-        if (!static::$instance) {
-            static::$instance = new static('_flash');
+        if (!isset(static::$instances[$sessionKey])) {
+            static::$instances[$sessionKey] = new static($sessionKey);
         }
 
-        return static::$instance;
+        return static::$instances[$sessionKey];
     }
 
     /**
@@ -62,7 +62,7 @@ class Flash
      */
     public static function sessionKey()
     {
-        return static::$instance->getSessionKey();
+        return static::$instances['_flash']->getSessionKey();
     }
 
     /**
@@ -73,7 +73,7 @@ class Flash
      */
     public static function setSessionKey($sessionKey)
     {
-        static::$instance = new static($sessionKey);
+        static::$instances['_flash'] = new static($sessionKey);
     }
 
     /**

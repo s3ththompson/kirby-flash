@@ -25,7 +25,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public function nextPageLoad()
     {
         $destroyInstance = function () {
-            static::$instance = null;
+            static::$instances = [];
         };
         $destroyInstance = $destroyInstance->bindTo(null, Flash::class);
         $destroyInstance();
