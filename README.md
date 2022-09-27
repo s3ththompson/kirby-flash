@@ -8,8 +8,8 @@ Allows you to "flash" data to the session, which will be available via the sessi
 
 Very useful for:
 
--   Saving submitted form data for form validation, specifically for the [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/Get) design pattern
--   Displaying Success or Error messages after a page reload
+- Saving submitted form data for form validation, specifically for the [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/Get) design pattern
+- Displaying Success or Error messages after a page reload
 
 ## Quick Example
 
@@ -21,8 +21,8 @@ Elsewhere...
 
 ```php
 <?php if (flash('thanks_message')): ?>
-    <?php echo flash('thanks_message'); ?>
-<?php endif; ?>
+    <?php echo flash('thanks_message') ?>
+<?php endif ?>
 ```
 
 ## Installation
@@ -39,7 +39,6 @@ composer require mzur/kirby-flash:^2.0
 ## Usage
 
 ### Set data
-
 ```php
 flash('key', 'value');
 
@@ -49,7 +48,6 @@ flash('username', 'jimihendrix');
 ```
 
 ### Get data
-
 ```php
 $value = flash('key');
 
@@ -60,7 +58,10 @@ $username = flash('username'); // "jimihendrix"
 ## Examples
 
 ```php
-flash('messages.errors', ['Email is required', 'Password is required']);
+flash('messages.errors', [
+    'Email is required',
+    'Password is required',
+]);
 
 flash('messages.errors'); // Array( 0 => 'Email is required', 1 => 'Password is required' )
 ```
@@ -70,9 +71,9 @@ flash('messages.errors'); // Array( 0 => 'Email is required', 1 => 'Password is 
 <div class="alert alert-error">
     <?php foreach (flash('messages.errors') as $message): ?>
         <div><?= html($message) ?></div>
-    <?php endforeach; ?>
+    <?php endforeach ?>
 </div>
-<?php endif; ?>
+<?php endif ?>
 ```
 
 ## `flash()` Helper Function
@@ -122,7 +123,7 @@ flash('message', 'Message for this response', true); // flash in a response to t
 
 By default Flash stores data under the session key `_flash`.
 
-So you _could_ access flash data like `$kirby->session()->get('_flash')` if you wanted to.
+So you *could* access flash data like `$kirby->session()->get('_flash')` if you wanted to.
 
 ### Changing the Session Key
 
@@ -137,6 +138,7 @@ Jevets\Kirby\Flash::setSessionKey('_my_custom_key');
 ```php
 Jevets\Kirby\Flash::sessionKey();
 ```
+
 
 ## Contributing
 
