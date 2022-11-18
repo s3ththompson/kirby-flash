@@ -9,7 +9,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Default preparation for each test.
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         Defuse::defuse();
