@@ -25,7 +25,7 @@ class Flash
      *
      * @var array
      */
-    protected $initialData;
+    protected $data;
 
     /**
      * Get a new instance
@@ -36,7 +36,7 @@ class Flash
     public function __construct($sessionKey)
     {
         $this->sessionKey = $sessionKey;
-        $this->initialData = App::instance()
+        $this->data = App::instance()
             ->session()
             ->pull($this->sessionKey, []);
     }
@@ -96,7 +96,7 @@ class Flash
      */
     public function set($key, $value, $now = false)
     {
-        $this->initialData[$key] = $value;
+        $this->data[$key] = $value;
         if ($now === false) {
             $nextData = App::instance()
                 ->session()
@@ -117,8 +117,8 @@ class Flash
      */
     public function get($key, $default = null)
     {
-        return isset($this->initialData[$key])
-            ? $this->initialData[$key]
+        return isset($this->data[$key])
+            ? $this->data[$key]
             : $default;
     }
 
@@ -129,6 +129,6 @@ class Flash
      */
     public function all()
     {
-        return $this->initialData;
+        return $this->data;
     }
 }
