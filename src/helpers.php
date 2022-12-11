@@ -12,7 +12,7 @@ if (!function_exists('flash')) {
      *
      * @param string $key
      * @param mixed optional $value to set
-     * @param mixed optional set $value for current page load only
+     * @param boolean optional set $value for current page load only
      */
     function flash($key, $setValue = '', $now = false)
     {
