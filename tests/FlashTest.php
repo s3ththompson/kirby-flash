@@ -71,6 +71,7 @@ class FlashTest extends TestCase
         $this->nextPageLoad();
         $flash = Flash::getInstance();
         $this->assertNull($flash->get('key'));
+        $this->assertEquals('value2', $flash->get('key2'));
     }
 
     public function testNow()
