@@ -112,12 +112,11 @@ flash('messages.errors'); // Array( 0 => 'Email is required.', 1 => 'Phone is re
 Sometimes it can be useful to flash a message for the current page load, not the next one. This use case
 arises when a message should be shown in a response to the same request, rather than a redirect.
 
-The `flash()` helper method can be called with an optional **third parameter**, a boolean to toggle whether to flash _now_ instead of in the next page load. The default value of this parameter is `false`: `flash($key, $value = '', $now = false)`.
+The `flash()` helper method can be called with an optional third parameter, a boolean to toggle whether to keep the flashed variable only for the current request. The default value of this parameter is `false` which will keep the flashed variable for the next request.
 
 ```php
-flash('message', 'Message for redirect'); // flash on the next page load (default)
-flash('message', 'Message for this response', true); // flash in a response to the same request
-```
+flash('message', 'Message for redirect'); // Keep for next request
+flash('message', 'Message for this response', true); // Keep only for current request
 
 ## Session Key
 
