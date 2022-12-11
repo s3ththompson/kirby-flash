@@ -14,13 +14,11 @@ class FlashTest extends TestCase
 
     public function testSessionKey()
     {
-        $flash = Flash::getInstance();
         $this->assertEquals('_flash', Flash::sessionKey());
     }
 
     public function testSetSessionKey()
     {
-        $flash = Flash::getInstance();
         Flash::setSessionKey('_myflash');
         $this->assertEquals('_myflash', Flash::sessionKey());
     }

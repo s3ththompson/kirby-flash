@@ -62,7 +62,7 @@ class Flash
      */
     public static function sessionKey()
     {
-        return static::$instance->getSessionKey();
+        return static::getInstance()->getSessionKey();
     }
 
     /**
