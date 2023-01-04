@@ -1,6 +1,6 @@
 # Kirby Flash
 
-[![Build Status](https://travis-ci.org/mzur/kirby-flash.svg?branch=master)](https://travis-ci.org/mzur/kirby-flash)
+[![Tests](https://github.com/mzur/kirby-flash/actions/workflows/php.yml/badge.svg)](https://github.com/mzur/kirby-flash/actions/workflows/php.yml)
 
 **This is a fork of [jevets\kirby-flash](https://github.com/jevets/kirby-flash).**
 
